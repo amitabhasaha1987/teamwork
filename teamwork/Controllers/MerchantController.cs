@@ -7,7 +7,7 @@ using teamwork.Models;
 
 namespace teamwork.Controllers
 {
-    [AuthorizeAccess]
+    
     public class MerchantController : Controller
     {
         // GET: Merchant
@@ -33,7 +33,7 @@ namespace teamwork.Controllers
            
         }
 
-
+        //[AuthorizeAccess]
         public ActionResult Index()
         {
             return View();

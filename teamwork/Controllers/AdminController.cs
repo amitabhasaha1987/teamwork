@@ -8,7 +8,7 @@ using teamwork.Models;
 namespace teamwork.Controllers
 {
 
-    [AuthorizeAccess]
+    
     public class AdminController : Controller
     {
         // GET: Admin
@@ -34,7 +34,7 @@ namespace teamwork.Controllers
            
         }
 
-
+        //[AuthorizeAccess]
         public ActionResult Index()
         {
             return View();
