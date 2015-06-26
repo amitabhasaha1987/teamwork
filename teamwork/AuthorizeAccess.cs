@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,15 +20,19 @@ namespace teamwork
             controller = context.Request.RequestContext.RouteData.Values["controller"].ToString();
             action = context.Request.RequestContext.RouteData.Values["action"].ToString();
 
-            if (Convert.ToInt16(System.Web.HttpContext.Current.Session["RoleId"]) == (int)UserType.Merchant)
+            if (System.Web.HttpContext.Current.Session["role"] != null)
             {
-                return true;
-            }
-            if (Convert.ToInt16(System.Web.HttpContext.Current.Session["RoleId"]) == (int)UserType.admin)
-            {
+                if (Convert.ToInt16(System.Web.HttpContext.Current.Session["role"]) == (int)UserType.Merchant)
+                {
                     return true;
-               
+                }
+                if (Convert.ToInt16(System.Web.HttpContext.Current.Session["role"]) == (int)UserType.admin)
+                {
+                    return true;
+
+                }
             }
+            
             
             return false;
         }

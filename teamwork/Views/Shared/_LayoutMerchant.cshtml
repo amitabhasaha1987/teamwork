@@ -61,7 +61,7 @@
                 <a href="#" class="navbar-brand">
                     <small>
                         <i class="fa fa-leaf"></i>
-                        @*Ace Admin*@
+                        Stylistics Merchant
                     </small>
                 </a>
 
@@ -85,7 +85,7 @@
                             @*<img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />*@
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                User Name
+                                @Convert.ToString(Session["username"])
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
@@ -124,7 +124,7 @@
 
         <!-- #section:basics/sidebar -->
         <div id="sidebar" class="sidebar                  responsive">
-            <script type="text/javascript">
+            @*<script type="text/javascript">
                 try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
             </script>
 
@@ -159,11 +159,11 @@
 
                     <span class="btn btn-danger"></span>
                 </div>
-            </div><!-- /.sidebar-shortcuts -->
+            </div><!-- /.sidebar-shortcuts -->*@
 
             <ul class="nav nav-list">
                 <li class="">
-                    <a href="index.html">
+                    <a href="/Merchant/index">
                         <i class="menu-icon fa fa-tachometer"></i>
                         <span class="menu-text"> Dashboard </span>
                     </a>
@@ -171,7 +171,7 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                @*<li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text">
@@ -569,14 +569,14 @@
                             <b class="arrow"></b>
                         </li>
                     </ul>
-                </li>
+                </li>*@
 
                 <li class="active open">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-file-o"></i>
 
                         <span class="menu-text">
-                            Other Pages
+                            Pages
 
                             <!-- #section:basics/sidebar.layout.badge -->
                             <span class="badge badge-primary">5</span>
@@ -591,49 +591,42 @@
 
                     <ul class="submenu">
                         <li class="">
-                            <a href="faq.html">
+                            <a href="#">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                FAQ
+                                Product Management
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
                         <li class="">
-                            <a href="error-404.html">
+                            <a href="#">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Error 404
+                                Reports
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
                         <li class="">
-                            <a href="error-500.html">
+                            <a href="#">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Error 500
+                                Related Product Management
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
                         <li class="">
-                            <a href="grid.html">
+                            <a href="#">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Grid
+                                Settings
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
-                        <li class="active">
-                            <a href="blank.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Blank Page
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
+                        
                     </ul>
                 </li>
             </ul><!-- /.nav-list -->
@@ -652,7 +645,7 @@
         <div class="main-content">
             <div class="main-content-inner">
                 <!-- #section:basics/content.breadcrumbs -->
-                <div class="breadcrumbs" id="breadcrumbs">
+                @*<div class="breadcrumbs" id="breadcrumbs">
                     <script type="text/javascript">
                         try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
                     </script>
@@ -678,7 +671,7 @@
                         </form>
                     </div><!-- /.nav-search -->
                     <!-- /section:basics/content.searchbox -->
-                </div>
+                </div>*@
 
                 <!-- /section:basics/content.breadcrumbs -->
                 <div class="page-content">
@@ -782,8 +775,8 @@
                 <!-- #section:basics/footer -->
                 <div class="footer-content">
                     <span class="bigger-120">
-                        <span class="blue bolder">Ace</span>
-                        Application &copy; 2013-2014
+                        <span class="blue bolder">Stylistics</span>
+                        Application &copy; 2014-2015
                     </span>
 
                     &nbsp; &nbsp;

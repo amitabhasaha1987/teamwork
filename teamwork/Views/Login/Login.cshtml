@@ -46,7 +46,7 @@
                             <h1>
                                 <i class="ace-icon fa fa-leaf green"></i>
                                 @*<span class="red">Merchant</span>*@
-                                <span class="white" id="id-text2">Merchant Login</span>
+                                <span class="white" id="id-text2">Stylishtics Login</span>
                             </h1>
                             <h4 class="blue" id="id-company-text">&copy; Teamwork</h4>
                         </div>
@@ -66,46 +66,47 @@
 
                                         @model teamwork.Models.Login
 
-                                        @using(Html.BeginForm("Login", "Merchant", FormMethod.Post))
+                                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                                         {
 
-                                        @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary(true)
-                                        <fieldset>
-                                            <label class="block clearfix">
-                                                <span class="block input-icon input-icon-right">
-                                                    @*<input type="text" class="form-control" placeholder="Username" />*@
-                                                    @Html.TextBoxFor(m=> m.username, new { @class = "form-control", placeholder = "Email Address" })
-                                                    <i class="ace-icon fa fa-user"></i>
-                                                    @Html.ValidationMessageFor(m => m.username)
-                                                </span>
-                                            </label>
-
-                                            <label class="block clearfix">
-                                                <span class="block input-icon input-icon-right">
-                                                    @*<input type="password" class="form-control" placeholder="Password" />*@
-                                                    @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Passoword" })
-                                                    <i class="ace-icon fa fa-lock"></i>
-                                                    @Html.ValidationMessageFor(m=>m.password)
-                                                </span>
-                                            </label>
-
-                                            <div class="space"></div>
-
-                                            <div class="clearfix">
-                                                <label class="inline">
-                                                    <input type="checkbox" class="ace" />
-                                                    <span class="lbl"> Remember Me</span>
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        @*<input type="text" class="form-control" placeholder="Username" />*@
+                                                        @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Email Address" })
+                                                        <i class="ace-icon fa fa-user"></i>
+                                                        @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                                                    </span>
                                                 </label>
 
-                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                                                    <i class="ace-icon fa fa-key"></i>
-                                                    <span class="bigger-110">Login</span>
-                                                </button>
-                                            </div>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        @*<input type="password" class="form-control" placeholder="Password" />*@
+                                                        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Passoword" })
+                                                        <i class="ace-icon fa fa-lock"></i>
+                                                        @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                                                    </span>
+                                                </label>
 
-                                            <div class="space-4"></div>
-                                        </fieldset>
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace" id="RememberMe" name="RememberMe" checked="checked"
+                                                               value="true" data-val="true" />
+                                                        <span class="lbl"> Remember Me</span>
+                                                    </label>
+
+                                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">Login</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                            </fieldset>
 
                                         }
                                         @*<form>
@@ -198,13 +199,14 @@
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="email" class="form-control" placeholder="Email" />
+                                                        <input type="email" class="form-control" placeholder="txtEmail" name="email" id="txtemail" />
                                                         <i class="ace-icon fa fa-envelope"></i>
                                                     </span>
                                                 </label>
 
                                                 <div class="clearfix">
-                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                    <label id="mailsendmsg"></label>
+                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-danger" onclick="forgetPassword()">
                                                         <i class="ace-icon fa fa-lightbulb-o"></i>
                                                         <span class="bigger-110">Send Me!</span>
                                                     </button>
@@ -321,6 +323,30 @@
     <!--[if !IE]> -->
     <script type="text/javascript">
         window.jQuery || document.write("<script src='../assets/js/jquery.js'>" + "<" + "/script>");
+
+
+        function forgetPassword()
+        {
+
+            if ($.trim($('#txtemail').val()) != '')
+            {
+                alert('ss');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SendEmail", "Login")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify( { email: $('#txtemail').val() }),
+                    complete: function (response) { },
+                    success: function (response) {
+                        $('#mailsendmsg').text(response);
+                        $('#txtemail').val();
+                    },
+                    error: function (error) { }
+                });
+            }
+            
+        }
+        
     </script>
 
     <!-- <![endif]-->

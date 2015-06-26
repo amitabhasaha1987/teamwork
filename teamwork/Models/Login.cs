@@ -15,11 +15,9 @@ namespace teamwork.Models
         [Required(ErrorMessage = "Required field")]
         [DataType(DataType.Password)]
         public string password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 
-    public enum UserType
-    {
-        admin=1,
-        Merchant=2
-    }
+   
 }

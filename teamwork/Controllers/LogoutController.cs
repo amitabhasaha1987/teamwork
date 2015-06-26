@@ -12,11 +12,8 @@ namespace teamwork.Controllers
         public ActionResult Index()
         {
             Session.Abandon();
-            if(Request.QueryString["p"]=="m")
-                return RedirectToAction("Login", "Merchant");
-            else if(Request.QueryString["p"]=="a")
-                return RedirectToAction("Login", "Admin");
-            return View();
+            return RedirectToAction("Login", "Login");
+            
         }
     }
 }

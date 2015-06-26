@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teamwork", "teamwork\teamwork.csproj", "{F037B1DB-4747-45AE-91FA-459BA1E0B696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{01CDA86A-9E58-4BF3-834F-8B84F6A91276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F037B1DB-4747-45AE-91FA-459BA1E0B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F037B1DB-4747-45AE-91FA-459BA1E0B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F037B1DB-4747-45AE-91FA-459BA1E0B696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01CDA86A-9E58-4BF3-834F-8B84F6A91276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01CDA86A-9E58-4BF3-834F-8B84F6A91276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01CDA86A-9E58-4BF3-834F-8B84F6A91276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01CDA86A-9E58-4BF3-834F-8B84F6A91276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
