@@ -172,7 +172,9 @@
     </Compile>
     <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\AES.cs" />
+    <Compile Include="Utility\AES.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Utility\Mailer.cs" />
   </ItemGroup>
   <ItemGroup>
