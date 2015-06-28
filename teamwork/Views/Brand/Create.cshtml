@@ -1,0 +1,85 @@
+﻿@model DataAccess.Models.Brand
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-header">
+    <h1>
+        Add Brand
+    </h1>
+</div>
+
+<div class="row">
+
+    @using (Html.BeginForm("Create", "Brand", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        if (TempData["Status"] != null && Convert.ToString(TempData["Status"]) == "1")
+        {
+            <div class="form-group">
+                <div class="col-sm-3 control-label"></div>
+                <div class="col-sm-9">
+                    <ul>
+                        <li>
+                            <i class="ace-icon fa fa-check bigger-110 green"></i>
+
+                            @Html.Label("Brand added successfully", new { @class = "control-label no-padding-middle" })
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.name, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.name, new { @class = "col-xs-10 col-sm-5", placeholder = "Brand Name" })
+                @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    <div class="space-4"></div>
+    <div class="form-group">
+        
+            @Html.LabelFor(x => x.display_flag, new { @class = "col-sm-3 control-label no-padding-right" })
+        
+        <div class="col-sm-9">
+            <div class="control-group">
+                <div class="radio">
+                    <label>
+                        @Html.RadioButtonFor(x => x.display_flag, 1, new { @class = "ace", @checked = "checked" })
+                        <span class="lbl"> Enable</span>
+                    </label>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        @Html.RadioButtonFor(x => x.display_flag, 0, new { @class = "ace" })
+                        <span class="lbl"> Disable</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit" value="1" name="command">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Create
+                </button>
+
+
+            </div>
+        </div>
+    }
+        <!-- #section:elements.form -->
+
+
+
+    </div>
+

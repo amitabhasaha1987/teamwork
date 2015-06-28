@@ -17,8 +17,15 @@ namespace DataAccess
         }
 
         public virtual DbSet<Merchant> Merchants { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Brand>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Merchant>()
                .Property(e => e.merchant_name)
                .IsUnicode(false);
@@ -53,6 +60,10 @@ namespace DataAccess
 
             modelBuilder.Entity<Merchant>()
                 .Property(e => e.logo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tag>()
+                .Property(e => e.name)
                 .IsUnicode(false);
         }
 

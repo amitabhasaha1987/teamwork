@@ -1,18 +1,43 @@
-﻿
+﻿@using DataAccess.Models;
 @{
-    Layout = null;
+    
+    if(System.Web.HttpContext.Current.Session["role"] != null)
+    {
+        UserType userrole = (UserType)(Convert.ToByte(System.Web.HttpContext.Current.Session["role"]));
+        if (userrole == UserType.admin)
+        {
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        }
+        else if (userrole == UserType.Merchant)
+        {
+            Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+        }
+    }
+    else
+    {
+        Layout = null; 
+    }
 }
 
-<!DOCTYPE html>
+<div class="col-xs-12">
+    <!-- PAGE CONTENT BEGINS -->
+    <!-- #section:pages/error -->
+    <div class="error-container">
+        <div class="well">
+            <h1 class="grey lighter smaller">
+                <span class="blue bigger-125">
+                    <i class="ace-icon fa fa-random"></i>
+                    401
+                </span>
+                Unauthorized Access.
+            </h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>unauthorized Access</title>
-</head>
-<body>
-    <div> 
-        unauthorized Access
+            
+
+         
+        </div>
     </div>
-</body>
-</html>
+
+    <!-- /section:pages/error -->
+    <!-- PAGE CONTENT ENDS -->
+</div>

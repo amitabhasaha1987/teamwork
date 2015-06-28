@@ -59,7 +59,7 @@
             <!-- /section:basics/sidebar.mobile.toggle -->
             <div class="navbar-header pull-left">
                 <!-- #section:basics/navbar.layout.brand -->
-                <a href="#" class="navbar-brand">
+                <a href="" class="navbar-brand">
                     <small>
                         <i class="fa fa-leaf"></i>
                         Stylistics Admin
@@ -545,7 +545,7 @@
                             Pages
 
                             <!-- #section:basics/sidebar.layout.badge -->
-                            <span class="badge badge-primary">5</span>
+                            <span class="badge badge-primary">4</span>
 
                             <!-- /section:basics/sidebar.layout.badge -->
                         </span>
@@ -557,7 +557,7 @@
 
                     <ul class="submenu">
                         <li class="">
-                            <a href="#">
+                            <a href="/Merchant/Create">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Merchant Management
                             </a>
@@ -566,7 +566,7 @@
                         </li>
 
                         <li class="">
-                            <a href="#">
+                            <a href="/Brand/Create">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Brand Management
                             </a>
@@ -575,7 +575,7 @@
                         </li>
 
                         <li class="">
-                            <a href="#">
+                            <a href="/Tag/Create">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Tag Management
                             </a>
@@ -592,14 +592,39 @@
                             <b class="arrow"></b>
                         </li>
 
-                        <li class="active">
-                            <a href="#">
+                        
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-tag"></i>
+                        <span class="menu-text"> Settings </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="/Settings/Profile">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Settings
+                                User Profile
                             </a>
 
                             <b class="arrow"></b>
                         </li>
+
+                        @*<li class="">
+                            <a href="#">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Change Password
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>*@
+
                     </ul>
                 </li>
             </ul><!-- /.nav-list -->
@@ -830,5 +855,8 @@
     <script src="../docs/assets/js/language/html.js"></script>
     <script src="../docs/assets/js/language/css.js"></script>
     <script src="../docs/assets/js/language/javascript.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>

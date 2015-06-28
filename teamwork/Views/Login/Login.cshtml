@@ -93,7 +93,7 @@
                                                 <div class="space"></div>
 
                                                 <div class="clearfix">
-                                                    <label class="inline">
+                                                    <label class="inline" style="display:none!important;">
                                                         <input type="checkbox" class="ace" id="RememberMe" name="RememberMe" checked="checked"
                                                                value="true" data-val="true" />
                                                         <span class="lbl"> Remember Me</span>
@@ -330,7 +330,6 @@
 
             if ($.trim($('#txtemail').val()) != '')
             {
-                alert('ss');
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SendEmail", "Login")',

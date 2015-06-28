@@ -7,10 +7,11 @@ using teamwork.Models;
 using DataAccess;
 using DataAccess.Models;
 using System.Net.Mail;
+using teamwork.Utility;
 
 namespace teamwork.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         // GET: Login
         public ActionResult Login()
@@ -104,47 +105,22 @@ namespace teamwork.Controllers
         [HttpPost]
         public JsonResult SendEmail(string email)
         {
-
-            string senderID = "stylistics.test@gmail.com";// use sender's email id here..
-            const string senderPassword = "stylistics.test123"; // sender password here...
-            string subject = " Forget Password";
-
-
-            try
-            {
                 using (Context db = new Context())
                 {
                     var merchant = db.Merchants.FirstOrDefault(u => u.contact_email == email);
                     if (merchant != null)
                     {
                         string body = "Hi <b>" + merchant.incharge_name + "</b>,<br/>" + "Your Password is <b>" + merchant.password + "<b>.<br> Thanks and Regards <br> Admin.";
+                        
+                        string subject = " Forget Password";
 
-                        SmtpClient smtp = new SmtpClient
-                        {
-                            Host = "smtp.gmail.com", // smtp server address here...
-                            Port = 587,
-                            EnableSsl = true,
-                            UseDefaultCredentials = false,
-                            DeliveryMethod = SmtpDeliveryMethod.Network,
-                            Credentials = new System.Net.NetworkCredential(senderID, senderPassword),
-                            Timeout = 30000,
-                        };
-                        MailMessage message = new MailMessage(senderID, "sahaamitabha123@gmail.com", subject, body);
-                        message.IsBodyHtml = true;
-                        smtp.Send(message);
-                        return Json("YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL");
+                        return Json(teamwork.Utility.Mailer.SendMail(subject, body, email) == true ? "YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL" : "Recovery failed, try again later.");
                     }
                     else
                     {
                         return Json("INVALID EMAIL ADDRESS");
                     }
                 }
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
         }
     }
 }

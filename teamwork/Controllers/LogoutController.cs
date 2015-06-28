@@ -7,7 +7,7 @@ using teamwork.Models;
 
 namespace teamwork.Controllers
 {
-    public class LogoutController : Controller
+    public class LogoutController : BaseController
     {
         public ActionResult Index()
         {

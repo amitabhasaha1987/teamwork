@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,8 @@ using teamwork.Models;
 namespace teamwork.Controllers
 {
 
-    [AuthorizeAccess]
-    public class AdminController : Controller
+    [AuthorizeAccess(UserType.admin)]
+    public class AdminController : BaseController
     {
         // GET: Admin
 
@@ -18,5 +19,7 @@ namespace teamwork.Controllers
         {
             return View();
         }
+
+
     }
 }

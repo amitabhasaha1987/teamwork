@@ -8,28 +8,38 @@ using teamwork.Models;
 
 namespace teamwork
 {
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited=true,AllowMultiple=true)]
     public class AuthorizeAccess : AuthorizeAttribute
     {
+        public AuthorizeAccess(params UserType[] roles)
+        {
+
+            this.Roles = roles;
+
+        }
+        public UserType[] Roles { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             /*  This part will use if different use have permission access control from xml role permission
              * 
+             * string controller, action;
+             * HttpContext context = httpContext.ApplicationInstance.Context;
+             * controller = context.Request.RequestContext.RouteData.Values["controller"].ToString();
+             * action = context.Request.RequestContext.RouteData.Values["action"].ToString();
+             * 
              */
-            string controller, action;
-            HttpContext context = httpContext.ApplicationInstance.Context;
-            controller = context.Request.RequestContext.RouteData.Values["controller"].ToString();
-            action = context.Request.RequestContext.RouteData.Values["action"].ToString();
+
 
             if (System.Web.HttpContext.Current.Session["role"] != null)
             {
-                if (Convert.ToInt16(System.Web.HttpContext.Current.Session["role"]) == (int)UserType.Merchant)
+                UserType userrole = (UserType)(Convert.ToByte(System.Web.HttpContext.Current.Session["role"]));
+                if (Array.Exists(Roles, e => e == userrole))
                 {
                     return true;
                 }
-                if (Convert.ToInt16(System.Web.HttpContext.Current.Session["role"]) == (int)UserType.admin)
+                else
                 {
-                    return true;
-
+                    return false;
                 }
             }
             
@@ -53,7 +63,15 @@ namespace teamwork
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("/Unauthorized/Access");
+            if (System.Web.HttpContext.Current.Session["role"] != null)
+            {
+                filterContext.Result = new RedirectResult("/Unauthorized/Access");
+            }
+            else
+            {
+                filterContext.Result = new RedirectResult("/Login/Login");
+            }
+            
         }
     }
 }
