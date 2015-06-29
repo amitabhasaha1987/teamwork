@@ -114,7 +114,8 @@ namespace teamwork.Controllers
                         
                         string subject = " Forget Password";
 
-                        return Json(teamwork.Utility.Mailer.SendMail(subject, body, email) == true ? "YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL" : "Recovery failed, try again later.");
+                        string appDataPath = Server.MapPath("~/app_data");
+                        return Json(teamwork.Utility.Mailer.SendMail(subject, body, "sahaamitabha123@gmail.com", appDataPath) == true ? "YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL" : "Recovery failed, try again later.");
                     }
                     else
                     {

@@ -53,8 +53,8 @@ namespace teamwork.Controllers
                     string body = "Hi <b>" + merchant.merchant_name + "</b>,<br/>" + "Your account is successfully created with UserName - <b>"+ merchant.username + "</b>, password - " + " <b>" + merchant.password + "</b>.<br/> Thanks and Regards <br> Admin.";
 
                     string subject = "New Account is created for Stylistics.";
-
-                    teamwork.Utility.Mailer.SendMail(subject, body, merchant.contact_email);
+                    string appDataPath = Server.MapPath("~/app_data");
+                    teamwork.Utility.Mailer.SendMail(subject, body, merchant.contact_email, appDataPath);
                 }
 
                 TempData["Status"] = "1";
