@@ -55,8 +55,15 @@
     <Compile Include="Models\Merchant.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Product.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Product_Images.cs" />
+    <Compile Include="Models\Product_Tags.cs" />
+    <Compile Include="Models\Related_Products.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ADO_Queries\" />

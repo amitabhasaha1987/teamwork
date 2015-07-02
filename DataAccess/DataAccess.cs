@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Models;
 
+
 namespace DataAccess
 {
     public class Context : DbContext
@@ -19,6 +20,7 @@ namespace DataAccess
         public virtual DbSet<Merchant> Merchants { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -65,10 +67,49 @@ namespace DataAccess
             modelBuilder.Entity<Tag>()
                 .Property(e => e.name)
                 .IsUnicode(false);
+
+            /* Product */
+            modelBuilder.Entity<Product>()
+                .Property(e => e.barcode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.thumbnail)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                            .HasMany(e => e.Product_Images)
+                            .WithRequired(e => e.Product)
+                            .HasForeignKey(e => e.product_id)
+                            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Product_Tags)
+                .WithRequired(e => e.Product)
+                .HasForeignKey(e => e.product_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Related_Products)
+                .WithRequired(e => e.Product)
+                .HasForeignKey(e => e.primary_product_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product_Images>()
+                .Property(e => e.extension)
+                .IsFixedLength();
         }
 
-       
-        
-       
+
+
+
     }
 }

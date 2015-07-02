@@ -1,0 +1,229 @@
+﻿@using DataAccess;
+@model DataAccess.Models.Product
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+}
+
+<div class="page-header">
+    <h1>
+        Add New Product (Basic Info)
+    </h1>
+</div>
+
+<div class="row">
+
+    @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        if (TempData["Status"] != null && Convert.ToString(TempData["Status"]) == "1")
+        {
+            <div class="form-group">
+                <div class="col-sm-3 control-label"></div>
+                <div class="col-sm-9">
+                    <ul>
+                        <li>
+                            <i class="ace-icon fa fa-check bigger-110 green"></i>
+
+                            @Html.Label("Product added successfully", new { @class = "control-label no-padding-middle" })
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        }
+
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.category, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.DropDownListFor(m => m.category,
+                DataAccess.Utility.Extensions.GetEnumSelectList<DataAccess.Models.Category>(),
+                "Select Category",
+                new { @class = "col-sm-5 control-label no-padding-left" })
+                @Html.ValidationMessageFor(m => m.category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.type, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.DropDownListFor(m => m.type,
+              DataAccess.Utility.Extensions.GetEnumSelectList<DataAccess.Models.Category>(),
+             "Select type",
+             new { @class = "col-sm-5 control-label no-padding-left" })
+                @Html.ValidationMessageFor(m => m.type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.barcode, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.barcode, new { @class = "col-xs-10 col-sm-5", placeholder = "Barcode Text" })
+
+            </div>
+        </div>
+
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.name, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.name, new { @class = "col-xs-10 col-sm-5", placeholder = "Product Name" })
+                @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.brand_id, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+
+                @Html.DropDownListFor(model => model.brand_id, new List<SelectListItem>(), "Select Brand", new { @class = "col-xs-10 col-sm-5 no-padding-left" })
+            </div>
+        </div>
+
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.sizes, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                <div class="control-group inline">
+
+                    @for (int i = 0; i < Model.SizeList.Count; i++)
+                    {
+
+                        @*@Html.CheckBoxFor(m => m.SizeList[i].IsSelected, new { id = "employmentType_" + i, name = "employmentType_" + i, @class = "ace1", })
+                            @Html.HiddenFor(m => m.SizeList[i].Size)*@
+
+                        <input @(Model.SizeList[i].IsSelected == true ? "checked='checked'" : "") class="ace" data-val="true" data-val-required="The IsSelected field is required." id="@("employmentType_" +i)" name="SizeList[@(i)].IsSelected" type="checkbox" value="true">
+                        <span class="lbl">  @Model.SizeList[i].Size.ToString()</span>
+                        <input name="SizeList[@(i)].IsSelected" type="hidden" value="false">
+                        <input data-val="true" data-val-required="The Size field is required." id="SizeList_@(i)__Size" name="SizeList[@(i)].Size" type="hidden" value="@Model.SizeList[i].Size" />
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="space-4"></div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.colors, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                <div class="control-group inline">
+
+                    @for (int i = 0; i < Model.ColorsList.Count; i++)
+                    {
+
+                        <input @(Model.ColorsList[i].IsSelected == true ? "checked='checked'" : "") class="ace" data-val="true" data-val-required="The IsSelected field is required." id="@("colorType_" +i)" name="ColorsList[@(i)].IsSelected" type="checkbox" value="true">
+                        <span class="lbl" style="color:@Model.ColorsList[i].ColorCode;font-weight:600;">  @Model.ColorsList[i].Color.ToString()</span>
+                        <input name="ColorsList[@(i)].IsSelected" type="hidden" value="false">
+                        <input data-val="true" data-val-required="The Size field is required." id="ColorsList@(i)__Size" name="ColorsList[@(i)].Color" type="hidden" value="@Model.ColorsList[i].Color" />
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.description, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextAreaFor(m => m.description,10,40, new { @class = "col-xs-10 col-sm-5", placeholder = "Description" })
+                @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.price, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.price, new { @class = "col-xs-10 col-sm-5", placeholder = "Price" })
+                @Html.ValidationMessageFor(m => m.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.current_stock, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.current_stock, new { @class = "col-xs-10 col-sm-5", placeholder = "Current Stock" })
+                @Html.ValidationMessageFor(m => m.current_stock, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.sale, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.sale, new { @class = "col-xs-10 col-sm-5", placeholder = "Sales (%)" })
+                @Html.ValidationMessageFor(m => m.sale, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.status, new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+
+
+                <div class="control-group">
+
+                    <div class="radio">
+                        <label>
+                            <input checked='checked' id="status" name="status" placeholder="Status" type="radio" value="1" class="ace">
+                            <span class="lbl bigger-120" > enable</span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input id="status" name="status" placeholder="Status" type="radio" value="2" class="ace">
+                            <span class="lbl bigger-120"> disable</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="space-4"></div>
+
+
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit" name="command" value="1" >
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Submit
+                </button>
+
+
+                <button class="btn" type="submit" value="2" name="command">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    Save and Next
+                </button>
+            </div>
+        </div>
+    }
+    <!-- #section:elements.form -->
+
+
+
+</div>

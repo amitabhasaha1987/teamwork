@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "ProductImage";
+    Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+    //var prodid = Convert.ToInt64(TempData["productId"]);
+    DataAccess.Models.Product prod = new DataAccess.Models.Product();
+}
+
+<div class="page-header">
+    <h1>
+        Add New Product (Images)
+    </h1>
+</div>
+
+<div class="row">
+
+    @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+    {
+        @*<input type="hidden" value="@prodid" name="hiddenproductid" id="hiddenproductid" />*@
+        <input type="hidden" value="37" name="hiddenproductid" id="hiddenproductid" />
+
+
+        <div id="productimages">
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Select Color</label>
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group inline">
+                        @for (int i = 0; i < prod.ColorsList.Count; i++)
+                        {
+
+                            <input class="ace" name="colorType" type="radio" value="@((int)prod.ColorsList[i].Color)" @(i == 0 ? "checked='checked'" : "")>
+                            <span class="lbl" style="color:@prod.ColorsList[i].ColorCode;font-weight:600;">  @prod.ColorsList[i].Color.ToString()</span>
+                        }
+                    </div>
+                </div>
+                <div class="space-6"></div>
+
+
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Browse Photo</label>
+                </div>
+                @*<div class="col-sm-10">
+                        <div class="control-group inline">
+                            <input type="file" name="_productimage" id="_productimage" />
+                        </div>
+                    </div>*@
+                <div class="col-xs-3 col-sm-3 col-lg-3">
+                    <!-- #section:custom/file-input -->
+                    <label class="ace-file-input"><input type="file" id="productimage_file"><span class="ace-file-container" data-title="Choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-10">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div>
+                        <ul class="ace-thumbnails clearfix" id="productimage_ul">
+                            <li>
+                                <a href="../assets/images/gallery/image-4.jpg" data-rel="colorbox" class="cboxElement">
+                                    <img width="150" height="150" alt="150x150" src="../assets/images/gallery/thumb-4.jpg">
+                                </a>
+                                <div class="tools tools-top right">
+                                    <a href="#">
+                                        <i class="ace-icon fa fa-times red"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- PAGE CONTENT ENDS -->
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Position</label>
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group">
+                        <select class="col-sm-1 control-label no-padding-left" id="productimage_position" name="category">
+                            @for (int i = 1; i <= 10; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group">
+                        <button class="btn btn-info" type="button" id="productimagebtn">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+            </div>
+        </div>
+
+    <div class="hr hr-24"></div>
+        <div id="trialimages">
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Browse Trial Photo</label>
+                </div>
+                @*<div class="col-sm-10">
+                <div class="control-group inline">
+                    <input type="file" name="_productimage" id="_productimage" />
+                </div>
+            </div>*@
+                <div class="col-xs-3 col-sm-3 col-lg-3">
+                    <!-- #section:custom/file-input -->
+                    <label class="ace-file-input"><input type="file" id="trialimages_file"><span class="ace-file-container" data-title="Choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-10">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div>
+                        <ul class="ace-thumbnails clearfix" id="trialimages_ul">
+                            <li>
+                                <a href="../assets/images/gallery/image-4.jpg" data-rel="colorbox" class="cboxElement">
+                                    <img width="150" height="150" alt="150x150" src="../assets/images/gallery/thumb-4.jpg">
+                                </a>
+                                <div class="tools tools-top right">
+                                    <a href="#">
+                                        <i class="ace-icon fa fa-times red"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- PAGE CONTENT ENDS -->
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Position</label>
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group">
+                        <select class="col-sm-1 control-label no-padding-left" id="trialimages_position" name="trialimages">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group">
+                        <button class="btn btn-info" type="button" id="trialimagesbtn">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+            </div>
+        </div>
+    <div class="hr hr-24"></div>
+        <div id="thumbnailimage">
+            <div class="form-group">
+                <div class="">
+                    <label class="col-sm-2 control-label no-padding-right">Browse Trial Photo</label>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-lg-3">
+                    <!-- #section:custom/file-input -->
+                    <label class="ace-file-input"><input type="file" id="thumbnailimage_file"><span class="ace-file-container" data-title="Choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                </div>
+                <div class="space-6"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-10">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div>
+                        <ul class="ace-thumbnails clearfix" id="thumbnailimage_ul">
+                            <li>
+                                <a href="../assets/images/gallery/image-4.jpg" data-rel="colorbox" class="cboxElement">
+                                    <img width="150" height="150" alt="150x150" src="../assets/images/gallery/thumb-4.jpg">
+                                </a>
+                                <div class="tools tools-top right">
+                                    <a href="#">
+                                        <i class="ace-icon fa fa-times red"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- PAGE CONTENT ENDS -->
+                </div>
+                <div class="space-6"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <div class="control-group">
+                        <button class="btn btn-info" type="button" id="thumbnailimagebtn">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+            </div>
+        </div>
+    }
+
+</div>
+

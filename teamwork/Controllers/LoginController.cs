@@ -35,7 +35,17 @@ namespace teamwork.Controllers
                      throw raise;
                  }*/
 
-
+            using (Context db = new Context())
+            {
+                var me = db.Merchants.ToList();
+                var p = db.Products.ToList();
+                var s = p.Count;
+                var m = me.Count();
+                foreach (var item in p)
+                {
+                    
+                }
+            }
             Login login = new Login();
             //if (Request.Cookies["username"] != null)
             //    login.username = Convert.ToString(Request.Cookies["username"].Value);
@@ -115,7 +125,7 @@ namespace teamwork.Controllers
                         string subject = " Forget Password";
 
                         string appDataPath = Server.MapPath("~/app_data");
-                        return Json(teamwork.Utility.Mailer.SendMail(subject, body, "sahaamitabha123@gmail.com", appDataPath) == true ? "YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL" : "Recovery failed, try again later.");
+                        return Json(teamwork.Utility.Mailer.SendMail(subject, body,merchant.contact_email, appDataPath) == true ? "YOUR PASSWORD SUCCESSFULLY SEND TO YOUE MAIL" : "Recovery failed, try again later.");
                     }
                     else
                     {

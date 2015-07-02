@@ -11,6 +11,16 @@ namespace teamwork.Controllers
     [AuthorizeAccess(UserType.admin)]
     public class BrandController : Controller
     {
+
+        public ActionResult Index()
+        {
+            using(Context db = new Context())
+            {
+                var brands = db.Brands.ToList();
+                return View(brands);
+            }
+        }
+
         // GET: Brand
         public ActionResult Create()
         {
@@ -35,5 +45,17 @@ namespace teamwork.Controllers
             }
             return View();
         }
+
+        public ActionResult Delete(int id)
+        {
+            using(Context db = new Context())
+            {
+                var brand = db.Brands.Find(id);
+                db.Brands.Remove(brand);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

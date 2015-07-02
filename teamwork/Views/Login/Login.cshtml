@@ -330,6 +330,7 @@
 
             if ($.trim($('#txtemail').val()) != '')
             {
+                $('#mailsendmsg').text('Please wait...!');
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SendEmail", "Login")',

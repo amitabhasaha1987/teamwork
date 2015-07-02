@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<DataAccess.Models.Merchant>
+<div class="page-header">
+    <h1>
+        Merchant List
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table id="simple-table" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Merchant</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Fax</th>
+                    <th>User Name</th>
+                    <th>Created</th>
+                    <th></th>
+
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.merchant_name
+                        </td>
+                        <td>
+                            @item.contact_email
+                        </td>
+                        <td class="hidden-480">@item.contact_phone</td>
+                        <td>@item.contact_fax</td>
+
+                        <td class="hidden-480">
+                            <span class="label label-sm label-default">@item.username</span>
+                        </td>
+
+                        <td>
+                            <span class="label label-sm label-default">@String.Format("{0:ddd, MMM d, yyyy}", item.created)</span>
+                        </td>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group">
+                                
+
+                                <a class="btn btn-xs btn-danger"onclick="ConfirmDelete('@item.id');">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </a>
+
+                                
+                            </div>
+
+                        </td>
+                        
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div>
+<script type="text/javascript">
+
+    function ConfirmDelete(_id) {
+        if (confirm("Are you sure you want to delete this?")) {
+
+            window.location.href = '/Merchant/Delete/' + _id;
+            //$.ajax({
+            //    type: 'GET',
+            //    url: '/Company/DeleteCompany',
+            //    contentType: "application/json; charset=utf-8",
+            //    data: { id: _id },
+            //    complete: function (response) { },
+            //    success: function (response) {
+            //        var jsonData = JSON.parse(response);
+            //        if (jsonData == true) {
+            //            $('#' + _id).fadeOut('slow');
+            //        }
+            //    },
+            //    error: function (error) { }
+            //});
+        }
+    }
+</script>

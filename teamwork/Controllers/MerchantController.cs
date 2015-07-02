@@ -30,6 +30,32 @@ namespace teamwork.Controllers
         }
 
         [AuthorizeAccess(UserType.admin)]
+        [HttpGet]
+        public ActionResult Details()
+        {
+            using(Context db = new Context())
+            {
+                var merchantList = db.Merchants.ToList();
+                return View(merchantList);
+            }
+            
+        }
+
+        [AuthorizeAccess(UserType.admin)]
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            using (Context db = new Context())
+            {
+                var merchant = db.Merchants.Find(id);
+                db.Merchants.Remove(merchant);
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+
+        }
+
+        [AuthorizeAccess(UserType.admin)]
         [HttpPost]
         public ActionResult Create(Merchant merchant, string command)
         {
