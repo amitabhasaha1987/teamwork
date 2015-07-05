@@ -12,7 +12,7 @@ namespace DataAccess.Models
     {
         public long id { get; set; }
 
-        public long merchent_id { get; set; }
+        public long merchant_id { get; set; }
 
         [StringLength(100)]
         [Display(Name = "Barcode Text")]
@@ -80,6 +80,9 @@ namespace DataAccess.Models
         [NotMapped]
         public List<Colors> ColorsList { get; set; }
 
+        [NotMapped]
+        public string BrandName { get; set; }
+
         public virtual ICollection<Product_Images> Product_Images { get; set; }
 
         public virtual ICollection<Product_Tags> Product_Tags { get; set; }
@@ -132,7 +135,7 @@ namespace DataAccess.Models
             this.current_stock = 0;
             this.sale = 0;
             this.price = 0.0;
-            this.merchent_id = 0;
+            this.merchant_id = 0;
             this.rating = 0;
             this.status = 0;
             this.created = DateTime.Now;

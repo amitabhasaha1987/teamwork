@@ -9,6 +9,10 @@ namespace DataAccess.Models
     [Table("Merchant")]
     public partial class Merchant
     {
+        public Merchant()
+        {
+            Related_Products = new HashSet<Related_Products>();
+        }
 
         [Key]
         public long id { get; set; }
@@ -70,6 +74,8 @@ namespace DataAccess.Models
         public short? status { get; set; }
 
         public short is_synched { get; set; }
+
+        public virtual ICollection<Related_Products> Related_Products { get; set; }
     }
 
     public enum UserType : byte 

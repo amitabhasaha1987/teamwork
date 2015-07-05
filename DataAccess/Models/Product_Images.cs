@@ -20,13 +20,11 @@ namespace DataAccess.Models
         [StringLength(10)]
         public string extension { get; set; }
 
-        public byte? is_trial_images { get; set; }
+        public byte? is_trial_image { get; set; }
 
         public byte? is_synched { get; set; }
 
         public DateTime created { get; set; }
-
-        public DateTime? modified { get; set; }
 
         public virtual Product Product { get; set; }
     }

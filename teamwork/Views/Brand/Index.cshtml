@@ -65,20 +65,6 @@
         if (confirm("Are you sure you want to delete this?")) {
 
             window.location.href = '/Brand/Delete/' + _id;
-            //$.ajax({
-            //    type: 'GET',
-            //    url: '/Company/DeleteCompany',
-            //    contentType: "application/json; charset=utf-8",
-            //    data: { id: _id },
-            //    complete: function (response) { },
-            //    success: function (response) {
-            //        var jsonData = JSON.parse(response);
-            //        if (jsonData == true) {
-            //            $('#' + _id).fadeOut('slow');
-            //        }
-            //    },
-            //    error: function (error) { }
-            //});
         }
     }
 </script>

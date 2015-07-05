@@ -18,12 +18,6 @@ namespace DataAccess.Models
 
         public DateTime created { get; set; }
 
-        public DateTime? modified { get; set; }
-
-        public short? status { get; set; }
-
-        public short is_deleted { get; set; }
-
         public short? is_synched { get; set; }
 
         public virtual Merchant Merchant { get; set; }

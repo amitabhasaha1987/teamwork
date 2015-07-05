@@ -1,0 +1,22 @@
+﻿@model ViewDataDictionary
+@{
+    ViewDataDictionary data = Model;
+    var productName = data["ProductName"];
+    var relatedprodid = data["RelatedProductId"];
+}
+
+<div class="form-group blue">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+        <div class="col-sm-5 control-label no-padding-left ">@productName</div>
+        &nbsp;&nbsp;
+        <a href="#" id="" class="removeRelatedProduct" data-productid="@relatedprodid">
+            <i class="large ace-icon glyphicon glyphicon-remove"></i><label class="" style="cursor:pointer">Remove</label>
+        </a>
+    </div>
+    <div class="col-sm-4">
+        
+    </div>
+    <div class="space-6"></div>
+</div>
+

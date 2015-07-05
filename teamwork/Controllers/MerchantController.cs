@@ -88,5 +88,41 @@ namespace teamwork.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            using(Context db = new Context())
+            {
+                var merchant = db.Merchants.Find(id);
+                if (merchant != null)
+                {
+                    return View(merchant);
+                }
+                else
+                {
+                    return RedirectToAction("Details");
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Merchant merchant)
+        {
+            if(ModelState.IsValid)
+            {
+                using (Context db = new Context())
+                {
+                    var M = db.Merchants.Find(merchant.id);
+                    M = merchant;
+                    M.modified = DateTime.Now;
+                    TempData["Status"] = "1";
+
+                    return View();
+                    
+                }
+            }
+            return View();
+        }
+
     }
 }

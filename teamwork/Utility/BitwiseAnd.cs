@@ -22,8 +22,8 @@ namespace teamwork.Utility
                 position++;
             }
             //add last reminder
-            if (reminder == 1)
-                factorList.Add((long)Math.Pow(2.00, position));
+            //if (reminder == 1)
+             factorList.Add((long)Math.Pow(2.00, position));
 
             return factorList.ToArray();
         }

@@ -9,30 +9,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="../assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="/Content/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/assets/css/font-awesome.css" />
 
     <!-- page specific plugin styles -->
     <!-- text fonts -->
-    <link rel="stylesheet" href="../assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="/Content/assets/css/ace-fonts.css" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="../assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="/Content/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
     <!--[if lte IE 9]>
-        <link rel="stylesheet" href="../assets/css/ace-part2.css" class="ace-main-stylesheet" />
+        <link rel="stylesheet" href="/Content/assets/css/ace-part2.css" class="ace-main-stylesheet" />
     <![endif]-->
     <!--[if lte IE 9]>
-      <link rel="stylesheet" href="../assets/css/ace-ie.css" />
+      <link rel="stylesheet" href="/Content/assets/css/ace-ie.css" />
     <![endif]-->
     <!-- inline styles related to this page -->
     <!-- ace settings handler -->
-    <script src="../assets/js/ace-extra.js"></script>
-
+    <script src="/Content/assets/js/ace-extra.js"></script>
+    <script src="/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
     <!--[if lte IE 8]>
-    <script src="../assets/js/html5shiv.js"></script>
-    <script src="../assets/js/respond.js"></script>
+    <script src="/Content/assets/js/html5shiv.js"></script>
+    <script src="/Content/assets/js/respond.js"></script>
     <![endif]-->
 </head>
 
@@ -82,7 +82,7 @@
                     <!-- #section:basics/navbar.user_menu -->
                     <li class="light-blue">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            @*<img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />*@
+                            @*<img class="nav-user-photo" src="/Content/assets/avatars/user.jpg" alt="Jason's Photo" />*@
                             <span class="user-info">
                                 <small>Welcome,</small>
                                 @Convert.ToString(Session["username"])
@@ -593,12 +593,19 @@
                         <li class="">
                             <a href="/Products/Add">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Product Management
+                                Add Product
                             </a>
 
                             <b class="arrow"></b>
                         </li>
+                        <li class="">
+                            <a href="/Products/Index">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Product List
+                            </a>
 
+                            <b class="arrow"></b>
+                        </li>
                         <li class="">
                             <a href="#">
                                 <i class="menu-icon fa fa-caret-right"></i>
@@ -609,7 +616,7 @@
                         </li>
 
                         <li class="">
-                            <a href="#">
+                            <a href="/Products/RelatedProducts">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 Related Product Management
                             </a>
@@ -827,57 +834,57 @@
     <!-- basic scripts -->
     <!--[if !IE]> -->
     <script type="text/javascript">
-        window.jQuery || document.write("<script src='../assets/js/jquery.js'>" + "<" + "/script>");
+        window.jQuery || document.write("<script src='/Content/assets/js/jquery.js'>" + "<" + "/script>");
     </script>
 
     <!-- <![endif]-->
     <!--[if IE]>
     <script type="text/javascript">
-     window.jQuery || document.write("<script src='../assets/js/jquery1x.js'>"+"<"+"/script>");
+     window.jQuery || document.write("<script src='/Content/assets/js/jquery1x.js'>"+"<"+"/script>");
     </script>
     <![endif]-->
     <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/Content/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
     </script>
-    <script src="../assets/js/bootstrap.js"></script>
+    <script src="/Content/assets/js/bootstrap.js"></script>
 
     <!-- page specific plugin scripts -->
     <!-- ace scripts -->
-    <script src="../assets/js/ace/elements.scroller.js"></script>
-    <script src="../assets/js/ace/elements.colorpicker.js"></script>
-    <script src="../assets/js/ace/elements.fileinput.js"></script>
-    <script src="../assets/js/ace/elements.typeahead.js"></script>
-    <script src="../assets/js/ace/elements.wysiwyg.js"></script>
-    <script src="../assets/js/ace/elements.spinner.js"></script>
-    <script src="../assets/js/ace/elements.treeview.js"></script>
-    <script src="../assets/js/ace/elements.wizard.js"></script>
-    <script src="../assets/js/ace/elements.aside.js"></script>
-    <script src="../assets/js/ace/ace.js"></script>
-    <script src="../assets/js/ace/ace.ajax-content.js"></script>
-    <script src="../assets/js/ace/ace.touch-drag.js"></script>
-    <script src="../assets/js/ace/ace.sidebar.js"></script>
-    <script src="../assets/js/ace/ace.sidebar-scroll-1.js"></script>
-    <script src="../assets/js/ace/ace.submenu-hover.js"></script>
-    <script src="../assets/js/ace/ace.widget-box.js"></script>
-    <script src="../assets/js/ace/ace.settings.js"></script>
-    <script src="../assets/js/ace/ace.settings-rtl.js"></script>
-    <script src="../assets/js/ace/ace.settings-skin.js"></script>
-    <script src="../assets/js/ace/ace.widget-on-reload.js"></script>
-    <script src="../assets/js/ace/ace.searchbox-autocomplete.js"></script>
+    <script src="/Content/assets/js/ace/elements.scroller.js"></script>
+    <script src="/Content/assets/js/ace/elements.colorpicker.js"></script>
+    <script src="/Content/assets/js/ace/elements.fileinput.js"></script>
+    <script src="/Content/assets/js/ace/elements.typeahead.js"></script>
+    <script src="/Content/assets/js/ace/elements.wysiwyg.js"></script>
+    <script src="/Content/assets/js/ace/elements.spinner.js"></script>
+    <script src="/Content/assets/js/ace/elements.treeview.js"></script>
+    <script src="/Content/assets/js/ace/elements.wizard.js"></script>
+    <script src="/Content/assets/js/ace/elements.aside.js"></script>
+    <script src="/Content/assets/js/ace/ace.js"></script>
+    <script src="/Content/assets/js/ace/ace.ajax-content.js"></script>
+    <script src="/Content/assets/js/ace/ace.touch-drag.js"></script>
+    <script src="/Content/assets/js/ace/ace.sidebar.js"></script>
+    <script src="/Content/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+    <script src="/Content/assets/js/ace/ace.submenu-hover.js"></script>
+    <script src="/Content/assets/js/ace/ace.widget-box.js"></script>
+    <script src="/Content/assets/js/ace/ace.settings.js"></script>
+    <script src="/Content/assets/js/ace/ace.settings-rtl.js"></script>
+    <script src="/Content/assets/js/ace/ace.settings-skin.js"></script>
+    <script src="/Content/assets/js/ace/ace.widget-on-reload.js"></script>
+    <script src="/Content/assets/js/ace/ace.searchbox-autocomplete.js"></script>
 
     <!-- inline scripts related to this page -->
     <!-- the following scripts are used in demo only for onpage help and you don't need them -->
-    <link rel="stylesheet" href="../assets/css/ace.onpage-help.css" />
-    <link rel="stylesheet" href="../docs/assets/js/themes/sunburst.css" />
+    <link rel="stylesheet" href="/Content/assets/css/ace.onpage-help.css" />
+    <link rel="stylesheet" href="/Content/docs/assets/js/themes/sunburst.css" />
 
     <script type="text/javascript"> ace.vars['base'] = '..'; </script>
-    <script src="../assets/js/ace/elements.onpage-help.js"></script>
-    <script src="../assets/js/ace/ace.onpage-help.js"></script>
-    <script src="../docs/assets/js/rainbow.js"></script>
-    <script src="../docs/assets/js/language/generic.js"></script>
-    <script src="../docs/assets/js/language/html.js"></script>
-    <script src="../docs/assets/js/language/css.js"></script>
-    <script src="../docs/assets/js/language/javascript.js"></script>
+    <script src="/Content/assets/js/ace/elements.onpage-help.js"></script>
+    <script src="/Content/assets/js/ace/ace.onpage-help.js"></script>
+    <script src="/Content/docs/assets/js/rainbow.js"></script>
+    <script src="/Content/docs/assets/js/language/generic.js"></script>
+    <script src="/Content/docs/assets/js/language/html.js"></script>
+    <script src="/Content/docs/assets/js/language/css.js"></script>
+    <script src="/Content/docs/assets/js/language/javascript.js"></script>
 
 
     <script src="~/Scripts/jquery.validate.min.js"></script>

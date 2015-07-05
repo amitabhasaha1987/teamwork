@@ -21,8 +21,8 @@ namespace DataAccess.Models
         public DateTime? modified { get; set; }
 
         [Display(Name="Status")]
-        public short? display_flag { get; set; }
+        public byte? display_flag { get; set; }
 
-        public short is_synched { get; set; }
+        public byte is_synched { get; set; }
     }
 }

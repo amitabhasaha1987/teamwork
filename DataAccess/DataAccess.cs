@@ -21,7 +21,9 @@ namespace DataAccess
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-
+        public virtual DbSet<Product_Images> Product_Images { get; set; }
+        public virtual DbSet<Product_Tags> Product_Tags { get; set; }
+        public virtual DbSet<Related_Products> Related_Products { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Brand>()
@@ -63,6 +65,12 @@ namespace DataAccess
             modelBuilder.Entity<Merchant>()
                 .Property(e => e.logo)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Merchant>()
+                .HasMany(e => e.Related_Products)
+                .WithRequired(e => e.Merchant)
+                .HasForeignKey(e => e.merchant_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Tag>()
                 .Property(e => e.name)

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "RelatedProducts";
+    Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+}
+<div class="page-header">
+    <h1>
+        Manage Related Product
+    </h1>
+</div>
+
+<div class="row">
+    <form class="form-horizontal" action="#" id="formRelatedProduct">
+        <div class="space-6"></div>
+        <div class="form-group">
+            @Html.Label("Select Product Category", new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.DropDownList("category",
+                DataAccess.Utility.Extensions.GetEnumSelectList<DataAccess.Models.Category>(),
+                "Select Category",
+                new { @class = "col-sm-5 control-label no-padding-left" })
+
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="space-6"></div>
+        <div class="form-group">
+            @Html.Label("Select Product", new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.DropDownList("product", new List<SelectListItem>(),
+                "Select Product",
+                new { @class = "col-sm-5 control-label no-padding-left" })
+
+                <span class="text-danger"></span>
+            </div>
+        </div>
+        <div class="space-6"></div>
+        <div class="form-group">
+            @Html.Label("Select Related Product", new { @class = "col-sm-3 control-label no-padding-right" })
+
+            <div class="col-sm-9">
+                @Html.DropDownList("relatedproduct", new List<SelectListItem>(),
+                "Select Product",
+                new { @class = "col-sm-5 control-label no-padding-left" })
+                &nbsp;&nbsp;
+                <a href="#" id="addRelatedProduct" >
+                    <i class="large ace-icon glyphicon glyphicon-plus"></i><label class="" style="cursor:pointer">Add</label>
+                </a>
+
+                &nbsp;&nbsp;
+                <span class="text-danger"></span>
+            </div>
+            <div class="col-sm-4">
+                
+            </div>
+        </div>
+        <div class="space-6"></div>
+        <div id="relatedProductList">
+
+        </div>
+    </form>
+
+</div>
+
+<script src="/Scripts/RelatedProducts.js"></script>

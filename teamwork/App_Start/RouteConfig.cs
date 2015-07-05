@@ -13,11 +13,20 @@ namespace teamwork
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             );
+
+
+            //routes.MapRoute(
+            //    name: "ProductImageUpload",
+            //    url: "{controller}/{action}/{id}/{type}/{category}",
+            //    defaults: new { controller = "Products", action = "ProductImage", id = UrlParameter.Optional, type = UrlParameter.Optional, category=UrlParameter.Optional }
+            //);
         }
     }
 }

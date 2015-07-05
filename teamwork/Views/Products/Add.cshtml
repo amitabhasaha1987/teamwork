@@ -2,7 +2,21 @@
 @model DataAccess.Models.Product
 @{
     ViewBag.Title = "Add";
-    Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+    DataAccess.Models.UserType userrole = (DataAccess.Models.UserType)(Convert.ToByte(System.Web.HttpContext.Current.Session["role"]));
+    if (userrole == DataAccess.Models.UserType.admin)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (userrole == DataAccess.Models.UserType.Merchant)
+    {
+        Layout = "~/Views/Shared/_LayoutMerchant.cshtml";
+    }
+    
+    List<SelectListItem> brandList = new List<SelectListItem>();
+    if(ViewData["Brands"]!= null)
+    {
+        brandList = ViewData["Brands"] as List<SelectListItem>;
+    }
 }
 
 <div class="page-header">
@@ -55,7 +69,7 @@
 
             <div class="col-sm-9">
                 @Html.DropDownListFor(m => m.type,
-              DataAccess.Utility.Extensions.GetEnumSelectList<DataAccess.Models.Category>(),
+              DataAccess.Utility.Extensions.GetEnumSelectList<DataAccess.Models.ProductType>(),
              "Select type",
              new { @class = "col-sm-5 control-label no-padding-left" })
                 @Html.ValidationMessageFor(m => m.type, "", new { @class = "text-danger" })
@@ -90,7 +104,7 @@
 
             <div class="col-sm-9">
 
-                @Html.DropDownListFor(model => model.brand_id, new List<SelectListItem>(), "Select Brand", new { @class = "col-xs-10 col-sm-5 no-padding-left" })
+                @Html.DropDownListFor(model => model.brand_id, brandList, "Select Brand", new { @class = "col-xs-10 col-sm-5 no-padding-left" })
             </div>
         </div>
 
@@ -145,7 +159,7 @@
             @Html.LabelFor(x => x.description, new { @class = "col-sm-3 control-label no-padding-right" })
 
             <div class="col-sm-9">
-                @Html.TextAreaFor(m => m.description,10,40, new { @class = "col-xs-10 col-sm-5", placeholder = "Description" })
+                @Html.TextAreaFor(m => m.description,5,25, new { @class = "col-xs-10 col-sm-5", placeholder = "Description" })
                 @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
             </div>
         </div>
